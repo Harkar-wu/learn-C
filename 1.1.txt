@@ -1,0 +1,22 @@
+#include <stdio.h>
+int main()
+{
+	int ch = 0;
+	int ret = 0;
+	char password[20] = { 0 };
+	printf("请输入密码:\n");
+	scanf("%s", password);//输入密码并存放在password数组中
+	//此时缓冲区还剩一个\n
+	while ((ch = getchar()) != '\n')
+	{
+		getchar();//用来读走多余的那个\n
+	}
+	printf("请确认（Y/N）\n");
+	ret = getchar();//接收Y/N
+	if (ret == 'Y' || ret=='y')
+		printf("确认成功\n");
+	else
+		printf("放弃确认\n");
+	printf("%s\n",password);
+	return 0;
+ }         
