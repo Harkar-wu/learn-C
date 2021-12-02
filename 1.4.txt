@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+#include <windows.h>
+#include <stdlib.h>
+int main()
+{
+	char arr1[] = "welcome to bit!!!";
+	char arr2[] = "#################";
+	int sz = sizeof(arr1) / sizeof(arr1[0]);
+	int left = 0;
+	//int right = sz - 2;//字符串在数组中最后有一个\0会被算进个数里，所以这里要-2
+	int right = strlen(arr1) - 1;
+	printf("%s\n",arr2);
+	for (;left<=right;left++,right--)
+	{
+		Sleep(1000);//延迟一秒
+		system("cls");//cls-清空屏幕
+		arr2[left] = arr1[left];
+		arr2[right] = arr1[right];
+		printf("%s\n",arr2);
+	}
+	return 0;
+ }         
