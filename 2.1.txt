@@ -1,0 +1,26 @@
+#include <stdio.h>
+void swap1(int x, int y)
+{
+	int tmp = 0;
+	tmp = x;
+	x = y;
+	y = tmp;
+}//存在问题
+
+void swap2(int* pa, int* pb)
+{
+	int tmp = 0;
+	tmp = *pa;
+	*pa = *pb;
+	*pb = tmp;
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	printf("%d %d\n", a, b);
+	//swap1(a,b);//x,y和a,b地址不同，都有自己 独立空间 无法相互影响
+	swap2(&a, &b);
+	printf("%d %d\n",a,b);
+    return 0;
+ }         
