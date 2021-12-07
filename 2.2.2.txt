@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+//青蛙跳台阶
+//1,2,3,5,8,13
+//类比于斐波那契数列
+//循环方式
+int Jump1(int n)
+{
+    int a = 1;
+    int b = 2;
+    int c = n;
+    while (n > 2)
+    {
+        c = a + b;
+        a = b;
+        b = c;
+        n--;
+    }
+    return c;
+    
+}
+//递归方式
+int Jump2(int n)
+{
+    if (n <= 2)
+        return n;
+    else
+        return Jump2(n - 1) + Jump2(n - 2);
+}
+int main()
+{
+    int n = 0;
+    int ret = 0;
+    scanf("%d",&n);
+    ret = Jump1(n);
+    printf("循环法:有%d种跳法\n",ret);
+    ret = Jump2(n);
+    printf("递归法:有%d种跳法\n", ret);
+    return 0;
+}
