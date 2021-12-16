@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+typedef struct student
+{
+    //成员变量
+    char name[20];
+    int age;
+    float weight;
+    char tele[12];
+    char sex[5];
+}stu;
+
+
+void print1(stu tmp)
+{
+    printf("name:%s\n",tmp.name);
+    printf("age:%d\n", tmp.age);
+    printf("weight:%f\n", tmp.weight);
+    printf("tele:%s\n", tmp.tele);
+    printf("sex:%s\n", tmp.sex);
+
+}
+
+void print2(stu* tmp)
+{
+    printf("name:%s\n", tmp->name);
+    printf("age:%d\n", tmp->age);
+    printf("weight:%f\n", tmp->weight);
+    printf("tele:%s\n", tmp->tele);
+    printf("sex:%s\n", tmp->sex);
+}
+
+int main()
+{
+    stu s = {"wyd",18,75.0,"13967845124","男"};//创建结构体变量
+    stu* ps=&s;
+    print1(s);
+    print2(ps);
+    return 0;
+}
