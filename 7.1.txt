@@ -1,0 +1,82 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <assert.h>
+/*方案
+void my_strcpy(char* dest, char* src)
+{
+    while (*src)
+    {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = *src;//拷贝'\0'
+}*/
+/* 优化一
+void my_strcpy(char* dest, char* src)
+{
+    while (*dest++ = *src++)
+    {
+    }
+}*/
+
+/*优化二   避免空指针的问题
+void my_strcpy(char* dest, char* src)
+{
+    if (dest != NULL && src != NULL)
+    {
+        while (*dest++ = *src++)
+        {
+            ;
+        }
+    }
+    
+}*/
+
+/*优化三  使用断言避免空指针问题
+void my_strcpy(char* dest, char* src)
+{
+    assert(dest!=NULL);//断言
+    assert(src != NULL);//断言---发现问题后会报错，方便解决问题
+    while (*dest++ = *src++)
+    {
+        ;
+    }
+}
+*/
+/*优化四  用const修饰src，避免因打代码时位置放错出现的问题
+void my_strcpy(char* dest,const char* src)
+{
+    assert(dest != NULL);//断言
+    assert(src != NULL);//断言---发现问题后会报错，方便解决问题
+    while (*dest++ = *src++)
+    {
+        ;
+    }
+}
+*/
+
+/*优化五   设置返回值char* 以便于直观的体现修改后的变化 */
+char* my_strcpy(char* dest, const char* src)
+{
+    char* ret = dest;
+    assert(dest != NULL);//断言
+    assert(src != NULL);//断言---发现问题后会报错，方便解决问题
+    //把src指向的字符串拷贝到dest指向的空间，包含'\0'字符
+    while (*dest++ = *src++)
+    {
+        ;
+    }
+    return ret;//我们要返回的是字符串的起始地址，所以要用ret把起始地址保存下来
+}
+
+
+
+int main()
+{
+    //strcpy
+    char arr1[] = "##############";
+    char arr2[] = "Hello world";
+    printf("%s\n", my_strcpy(arr1, arr2));
+    return 0;
+}
