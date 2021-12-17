@@ -1,0 +1,17 @@
+git config --global user.name "your name"
+git config --global user.email "your_email@163.com"
+//绑定github账户
+ssh-keygen -t rsa -C "your_email@163.com"
+//创建密钥
+ssh -T -git@github.com
+//测试密钥是否绑定成功
+git init
+//初始化仓库
+git remote add origin git@github.com:fang-king/Selenium.git
+//建立本地与github上新建项目连接
+git add .
+//添加本地文件到缓存区
+git commit -m ""
+//为上传文件添加注释
+git push origin master
+提交本地文件到github新建项目中
