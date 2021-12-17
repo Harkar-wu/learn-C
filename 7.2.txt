@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <assert.h>
+
+ 
+int my_strlen(const char* arr)
+{
+    int i = 0;
+    assert(arr!=NULL);//保证指针的有效性
+    while (*arr)
+    {
+        i++;
+        arr++;
+    }
+    return i;
+}
+
+int main()
+{
+    //strlen
+    char arr[] = "Hello World";
+    int len = my_strlen(arr);
+    printf("%d\n",len);
+    return 0;
+}
