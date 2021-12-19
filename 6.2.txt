@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+//struct--结构体关键词    student---结构体标签      struct student ----结构体类型
+typedef struct student
+{
+    //成员变量
+    char name[20];
+    int age;
+    float weight;
+    char tele[12];
+    char sex[5];
+}stu;
+
+int main()
+{
+    stu s = {"wyd",18,75.0,13967845124,"男"};//创建结构体变量
+    stu* ps=&s;
+    printf("%s\n",ps->name);//结构体指针访问指向变量的成员
+    printf("%s\n",s.name);//结构体变量访问成员是通过（.）操作符访问的
+    return 0;
+}
