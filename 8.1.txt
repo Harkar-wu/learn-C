@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int check_sys()
+{
+    int a = 1;
+    //返回1小端，返回0大端
+    return *(char*)&a;
+}
+
+int main()
+{
+   int i= check_sys();
+   if (i == 1)
+       printf("该机器为小端存储模式\n");
+   else
+       printf("该机器为大端存储模式\n");
+    return 0;
+}
