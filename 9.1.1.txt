@@ -1,0 +1,18 @@
+写法一
+#include <stdio.h>
+int main()
+{
+    char arr[] = "Hello world";
+    char* parr = arr;
+    printf("%s\n",parr);
+    return 0;
+}
+写法二
+#include <stdio.h>
+int main()
+{
+    const char* p = "Hello world";//常量字符串
+    printf("%c\n",*p);
+    printf("%s\n",p);
+    return 0;
+}
