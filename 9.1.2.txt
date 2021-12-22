@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main()
+{
+    char arr1[] = "abcdef";
+    char arr2[] = "abcdef";
+    const char* p1 = "abcdef";
+    const char* p2 = "abcdef";
+    if (p1 == p2)
+    {
+        printf("1");
+    }
+    else
+    {
+        printf("2");
+    }
+    //p1和p2指向同一个常量字符串的起始地址，所以p1=p2
+    /*if (arr1 == arr2)
+    {
+        printf("1");
+    }
+    else
+    {
+        printf("2");
+    }*/
+    //arr1和arr2的首元素地址不同
+    return 0;
+}
