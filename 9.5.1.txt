@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+void Print(char* str)
+{
+    printf("%s\n",str);
+}
+
+int main()
+{
+    void (*p)(char*) = Print;
+    (*p)("Hello World!");
+    return 0;
+}
+
+//函数指针的定义
+//函数返回类型  （*指针变量名）（函数参数类型）=函数名
