@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int compar(const void* a,const void* b)
+{
+    return *(int*)a-*(int*)b;
+}
+
+int main()
+{
+    int i = 0;
+    int arr[10] = { 1,2,3,8,7,9,5,6,4,0 };
+    int sz = sizeof(arr) / sizeof(arr[0]);
+    qsort(arr,sz,sizeof(int),compar);
+    for (i = 0; i < sz; i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    return 0;
+}
