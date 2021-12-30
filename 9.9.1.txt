@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+int main()
+{
+    //一维数组
+    int a[] = { 1,2,3,4 };
+    printf("%d\n",sizeof(a));//sizeof(数组名)--计算的是数组综合大小-16
+    printf("%d\n", sizeof(a+0));//4/8-数组名，这里表示u首元素地址，a+0还是首元素地址，地址大小就是4/8
+    printf("%d\n", sizeof(*a));//4-数组名表示首元素地址，*a就是首元素
+    printf("%d\n", sizeof(a+1));//4/8
+    printf("%d\n", sizeof(a[1]));//4
+    printf("%d\n", sizeof(&a));//4/8-地址的大小
+    printf("%d\n", sizeof(*&a));//16-这里&a是数组的地址，数组的地址解引用访问的是数组，sizeof计算的是数组的大小
+    printf("%d\n", sizeof(&a+1));//4/8
+    printf("%d\n", sizeof(&a[0]));//4/8
+    printf("%d\n", sizeof(&a[0]+1));//4/8
+
+    //字符数组
+    char arr[] = { 'a','b','c','d','e','f' };
+    printf("%d\n",sizeof(arr));//6
+    printf("%d\n", sizeof(arr+0));//4/8
+    printf("%d\n", sizeof(*arr));//1
+    printf("%d\n", sizeof(arr[1]));//1
+    printf("%d\n", sizeof(&arr));//4/8
+    printf("%d\n", sizeof(&arr+1));//4/8
+    printf("%d\n", sizeof(&arr[0]+1));//4/8
+    
+    printf("%d\n",strlen(arr));//随机数
+    printf("%d\n", strlen(arr+0));//随机数
+    printf("%d\n", strlen(*arr));//err
+    printf("%d\n", strlen(arr[1]));//err
+    printf("%d\n", strlen(&arr));//随机数
+    printf("%d\n", strlen(&arr+1));//随机数
+    printf("%d\n", strlen(&arr[0]+1));//随机数
+
+
+
+    char arr1[] = "abcdef";
+    printf("%d\n",sizeof(arr1));//7
+    printf("%d\n", sizeof(arr1+0));//4/8
+    printf("%d\n", sizeof(*arr1));//1
+    printf("%d\n", sizeof(arr1[1]));//1
+    printf("%d\n", sizeof(&arr1));//4/8
+    printf("%d\n", sizeof(&arr1+1));//4/8
+    printf("%d\n", sizeof(&arr1[0]+1));//4/8
+
+
+
+    printf("%d\n",strlen(arr1));//6
+    printf("%d\n", strlen(arr1+0));//6
+    printf("%d\n", strlen(*arr1));//err
+    printf("%d\n", strlen(arr1[1]));//err
+    printf("%d\n", strlen(&arr1));//6
+    printf("%d\n", strlen(&arr1+1));//随机数
+    printf("%d\n", strlen(&arr1[0]+1));//5
+
+    //二维数组
+    int aa[3][4] = { 0 };
+    printf("%d\n",sizeof(aa));//48
+    printf("%d\n", sizeof(aa[0][0]));//4
+    printf("%d\n", sizeof(aa[0]));//16
+    printf("%d\n", sizeof(aa[0]+1));//4/8 --aa[0]是第一行数组名，此时表示的是首元素地址
+    printf("%d\n", sizeof(*(aa[0]+1)));//4
+    printf("%d\n", sizeof(aa+1));//4/8
+    printf("%d\n", sizeof(*(aa+1)));//16
+    printf("%d\n", sizeof(&aa[0]+1));//4/8 -- 第二行的地址
+    printf("%d\n", sizeof(*(&aa[0] + 1)));//16
+    printf("%d\n", sizeof(*aa));//16
+    printf("%d\n", sizeof(aa[3]));//16--sizeof内的表达式不会进行真实运算，这里的aa[3]只是表达一个二维数组第四行的大小
+    return 0;
+}
