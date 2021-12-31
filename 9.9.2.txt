@@ -1,0 +1,69 @@
+一：
+int main()
+{
+    int a[5] = { 1,2,3,4,5 };
+    int* ptr = (int*)(&a + 1);
+    printf("%d,%d",*(a+1),*(ptr-1));
+    return 0;
+}
+
+
+二：
+#include <stdio.h>
+
+struct Test
+{
+    int Num;
+    char* pcName;
+    short sDate;
+    char cha[2];
+    short sBa[4];
+}*p;
+//假设p 的值为0x100000.如下表达式的值分别为多少
+//已知结构体Test类型的变量大小为20个字节
+
+int main()
+{
+    p = (struct Test*)0x100000; 
+    printf("%p\n",p+0x1);//100014
+    printf("%p\n",(unsigned long)p+0x1);//100001
+    printf("%p\n", (unsigned int*)p + 0x1);//100004
+    return 0;
+}
+
+
+三
+int main()
+{
+    int a[4] = { 1,2,3,4 };
+    //内存中
+    //01 00 00 00 02 00 00 00 03 00 00 00 04 00 00 00
+    int* ptr1 = (int*)(&a + 1);
+    int* ptr2 = (int*)((int)a + 1);
+    printf("%x,%x",ptr1[-1],*ptr2);
+    return 0;
+}
+
+四
+int main()
+{
+    int a[3][2] = { (0,1),(2,3),(4,5) };
+    int* p = NULL;
+    p = a[0];
+    printf("%d",p[0]);
+    return 0;
+}
+
+五
+int main()
+{
+    int a[5][5];
+    int (*p)[4];
+    p = a;
+    printf("%p,%d\n",&p[4][2]-&a[4][2],&p[4][2]-&a[4][2]);
+    //以%p打印时，无关正负，直接打印内存中的数据
+    //-4在内存中
+    //1111 1111 1111 1111 1111 1111 1111 1100
+    //FF FF FF FC
+    return 0;
+}
