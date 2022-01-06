@@ -1,0 +1,60 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main()
+{
+    //喝汽水问题
+    //一瓶汽水1元，2个空瓶可以换一瓶汽水，给20元，可以喝多少汽水
+    //方案一:
+    int empty = 0;
+    int money = 0;
+    int i = 0;
+    int sum = 0;
+    printf("请输入你有多少钱:\n");
+    scanf("%d",&money);
+    for (i = 0; i < money; i++)
+    {
+        sum++;
+        empty++;
+        while (empty == 2)
+        {
+            sum++;
+            empty = 1;
+        }
+    }
+    printf("一共能喝%d瓶汽水",sum);
+
+
+    //方案二
+    int money = 0;
+    int empty = 0;
+    int sum = 0;
+    printf("请输入你有多少钱:\n");
+    scanf("%d", &money);
+    empty = money;
+    sum = money;
+    while (empty >= 2)
+    {
+        sum += empty / 2;
+        empty = empty / 2 + empty % 2;
+    }
+    printf("一共能喝%d瓶汽水", sum);
+
+
+    //方案三
+    int money = 0;
+    int sum = 0;
+    printf("请输入你有多少钱:\n");
+    scanf("%d", &money);
+    if (money == 0)
+    {
+        sum = 0;
+    }
+    else
+    {
+        sum = 2 * money - 1;
+    }
+    printf("一共能喝%d瓶汽水", sum);
+    return 0;
+}
