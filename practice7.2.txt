@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+
+
+
+//三步翻转法
+//abcdef
+//ba fedc  分别逆序左边和右边
+//cdefab   逆序整体
+
+void reverse(char* left,char* right)
+{
+    assert(left != NULL);
+    assert(right != NULL);
+    while (left<right)
+    {
+        char tmp = *right;
+        *right = *left;
+        *left = tmp;
+        left++;
+        right--;
+    }
+}
+
+
+void three_move(char* arr, int k)
+{
+    assert(arr);
+    int len = strlen(arr);
+    assert(k<=len);
+    reverse(arr,arr+k-1);//逆序左边
+    reverse(arr+k,arr+len-1);//逆序右边
+    reverse(arr,arr+len-1);//逆序整体
+}
+
+int main()
+{
+    char arr[] = {"abcdef"};
+    three_move(arr, 2);
+    printf("%s\n", arr);;
+    return 0;
+}
