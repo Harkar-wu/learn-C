@@ -1,0 +1,45 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+
+
+
+//写一个函数判断一个字符串是否为另一个字符串旋转后的字符串
+//例如s1=AABCD，s2=BCDAA，返回1
+//给定s1=abcd，s2=ACBD，返回0
+
+//AABCD左旋转一个字符得到ABCDA
+//AABCD左旋转两个字符得到BCDAA
+//AABCD右旋转一个字符得到DAABC
+
+
+int is_move(char* s1, const char* s2)
+{
+    int len1 = strlen(s1);
+    int len2 = strlen(s2);
+    if (len1 != len2)
+        return 0;
+    //在s1字符串中追加一个s1字符串
+    // strcat---字符串追加,在自己对自己追加时，会改变自己的‘\0’，导致永远没有\0结尾
+    // strncat
+    strncat(s1, s1,len1);//在第n个字符后开始追加
+    //判断s2指向的字符串是否是s1指向的字符串的子串
+    //strstr---找子串
+    char* ret=strstr(s1, s2);//在s1中找s2这个子串
+    if (ret == NULL)
+        return 0;
+    else
+        return 1;
+}
+
+int main()
+{
+     char arr1[30] = "abcdef";//要在这个字符串后追加，如果不给一个大空间会导致该地址周围堆栈损坏，所以给定一个30的空间可以容纳追加后的字符串
+     char arr2[] = "cdefab";
+     int ret = is_move(arr1,arr2);
+     if (ret == 1)
+         printf("YES\n");
+     else
+         printf("NO\n");
+}
