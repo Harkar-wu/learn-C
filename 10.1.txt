@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <assert.h>
+
+//1.计数器的方法
+
+size_t one_my_strlen(const char* str)
+{
+    int count = 0;
+    assert(str != NULL);
+    while (*str)
+    {
+        count++;
+        str++;
+    }
+    return count;
+}
+
+//2.递归
+// 不创建临时变量求字符串长度
+size_t two_my_strlen(const char* str)
+{
+    assert(str != NULL);
+    if (*str)
+        return two_my_strlen(str + 1) + 1;
+    else
+        return 0;
+}
+//3.指针-指针
+size_t three_my_strlen(const char* str)
+{
+    assert(str != NULL);
+    char* start = str;
+    char* end = str;
+    while (*end)
+    {
+        end++;
+    }
+    return end-start;
+}
+
+int main()
+{
+    int len = three_my_strlen("abcdef");
+    printf("%d\n",len);
+    return 0;
+}
