@@ -1,0 +1,28 @@
+my_strncpy
+char* my_strncpy(char* dest , const char* source , size_t count)
+{
+       char* start = dest;
+       while(count && (*dest++ = *source++))       //拷贝字符串
+                   count--;
+       if(count)                                                   //如果要拷贝的字节数大于源头字节数，则补充‘\0’
+                   while(--count)                              //因为在*dest++='\0'时没有进入循环，所以这里要先把count减一下
+                             *dest++ = '\0' ;
+       return start;
+}
+
+
+my_strncat
+char* my_strncat(char* front , const char* back , size_t count)
+{
+         char* start = front;
+         while(*front++)                                //将front定位到'\0'后一个字节
+                      ；
+         front--;                                          //将front调整至‘\0’的位置
+
+         while(count--)
+               if(!(*front++ = *back++))             //将back追加到front中，当追加至back的‘\0’时，判断条件为真，直接返回start
+                          return start;
+         
+          *front = '\0';                                   //当count小于back的字节数时，自动追加一个‘\0’结尾
+          return start;
+}
