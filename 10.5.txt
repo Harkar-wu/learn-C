@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+
+char* my_strstr(const char* str1,const char* str2)
+{
+    assert(str1 != NULL);
+    assert(str2 != NULL);
+    if (*str2 == '\0')
+    {
+        return str2;
+    }
+    char* a = NULL;
+    char* b = NULL;
+    char* cur = str1;
+    while (*cur)
+    {
+        a = str1;
+        b = str2;
+        while (*a && *b && (*a == *b))
+        {
+            a++;
+            b++;
+        }
+        if (*b == '\0')
+            return a;            
+       cur++;
+    }
+    return NULL;
+}
+
+
+int main()
+{
+    char* p1 = "abcdef";
+    char* p2 = "cdef";
+    char* ret = my_strstr(p1, p2);
+    if(ret==NULL)
+        printf("p2不是p1的子串\n");
+    else
+        printf("p2是p1的子串：%s\n",ret);
+    return 0;
+}
