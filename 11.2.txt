@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+
+void* my_memmove(void* dest, const void* src, size_t size)
+{
+    assert(dest != NULL);
+    assert(src != NULL);
+    void* ret = dest;
+    if (dest < src)
+    {
+        while (size--)
+        {
+            *(char*)dest = *(char*)src;
+            ++(char*)dest;
+            ++(char*)src;
+        }
+    }
+    else
+    {
+        while (size--)
+        {
+            *((char*)dest + size) = *((char*)src + size);
+
+        }
+    }
+    return ret;
+}
+
+int main()
+{
+    int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+    my_memmove(arr+2,arr,20);//处理内存重叠的情况
+    return 0;
+}
