@@ -1,0 +1,20 @@
+struct A
+{
+    int _a:2;//2个比特位
+    int _b:5;//5个比特位
+    int _c:10;//10个比特位
+    int _d:30;//30个比特位
+};
+
+int main()
+{
+    printf("%d\n",sizeof(struct A));//8
+    return 0;
+}
+A就是一个位段类型
+printf("%d\n",sizeof(struct A));
+位段A的大小为8
+先开辟一个int,4个字节，32个比特位的空间
+a,b,c,分别划分2，5，10个比特位的空间
+d需要30个比特位，剩下空间不够直接舍弃，再新开辟一个int
+所以最终结果为8个字节
