@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+//用联合体判断字节序
+
+union UN
+{
+    char c;
+    int i;
+};
+
+int check_sys()
+{
+    union UN u;
+    u.i = 1;
+    return u.c;
+
+}
+
+int main()
+{
+    
+    int ret = check_sys();
+    if (ret == 1)
+    {
+        printf("小端");
+    }
+    else
+    {
+        printf("大端");
+    }
+
+    return 0;
+}
